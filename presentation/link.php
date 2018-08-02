@@ -63,5 +63,16 @@ public static function translitIt($str)
 	
 	return trim($s,'-');
 }
+
+public static function ToTest($page = 1)
+{
+	$link = 'test/';
+	
+	if ($page > 1)
+		$link .= 'page-' . $page . '/';
+		
+	return self::Build($link);
+}
+
 }
 ?>

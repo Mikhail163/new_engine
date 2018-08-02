@@ -1,5 +1,5 @@
 <?php 
 
-echo '<h1>Footer</h1>';
+echo '<p>Footer</p>';
 
 ?>

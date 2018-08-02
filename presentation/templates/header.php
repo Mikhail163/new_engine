@@ -1,5 +1,5 @@
 <?php 
 
-echo '<h1>Header</h1>';
+echo '<p>Header</p>';
 
 ?>

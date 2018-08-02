@@ -17,13 +17,13 @@ $sf_obj = new StoreFront;
 
 <?php 
 
-require_once TEMPLATE_DIR. '/header.php';
+include TEMPLATE_DIR. '/header.php';
 
-require_once TEMPLATE_DIR. '/main_menu.php';
+include TEMPLATE_DIR. '/main_menu.php';
 
-require_once TEMPLATE_DIR. '/content.php';
+include TEMPLATE_DIR. '/content.php';
 
-require_once TEMPLATE_DIR. '/footer.php';
+include TEMPLATE_DIR. '/footer.php';
 
 
 ?>
