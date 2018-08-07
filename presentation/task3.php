@@ -1,19 +1,6 @@
 <?php 
 
-header("Content-Type: text/html; charset=UTF-8"); 
-
 require_once PRESENTATION_DIR . 'content.php';
-
-class PageLink {
-	public $mText = '';
-	public $mUrl = '';
-	
-	public function __construct($text, $url)
-	{
-		$this->mText = $text;
-		$this->mUrl = $url;
-	}
-}
 
 class Task3  extends Content
 {
