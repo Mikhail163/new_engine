@@ -3,6 +3,8 @@ header("Content-tupe: text/html; charset=utf-8");
 
 class Link
 {
+	
+	
   public static function Build($link, $type = 'http')
   {
     $base = (($type == 'http' || USE_SSL == 'no') ? 'http://' : 'https://') .
