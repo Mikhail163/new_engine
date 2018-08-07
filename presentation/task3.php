@@ -1,5 +1,7 @@
 <?php 
 
+header("Content-Type: text/html; charset=UTF-8"); 
+
 require_once PRESENTATION_DIR . 'content.php';
 
 class PageLink {
@@ -15,19 +17,36 @@ class PageLink {
 
 class Task3  extends Content
 {
-	public $mCities = [
-			"Московская область" => ["Москва", "Зеленоград", "Клин"],
-			"Ленинградская область" => ["Санкт-Петербург", "Всеволожск", "Павловск", "Кронштадт"]
-	];
+	public $mCities = [];
+	
+	public $mMenu = [];
 	
 	public function __construct()
 	{
-		;
+		$this->mCities = [
+				"Московская область" => ["Москва", "Зеленоград", "Клин"],
+				"Ленинградская область" => ["Санкт-Петербург", "Всеволожск", "Павловск", "Кронштадт"]
+		];
+		
+		$this->mMenu = [
+				["Главная", "/",
+						[
+								["о нас", "/aboutus",
+										[
+												["офис", "/aboutus/office", []],
+												["склад", "/aboutus/sklad", []]
+										]
+								],
+								["реквизиты", "/requisits",  []]
+						]
+				],
+				["Каталог товаров", "/catalog", []]
+		];
 	}
 	
 	public function getContent() {
 		
-		return $this->task0() . $this->task1() . $this->task2() . $this->task3() . $this->task4() . $this->task5();
+		return $this->task0() . $this->task1() . $this->task2() . $this->task3() . $this->task4() . $this->task5() . $this->task6() . $this->task7() . $this->task8();
 		
 	}
 	
@@ -161,22 +180,7 @@ class Task3  extends Content
 	private function task5() {
 		$task = new Task(6, "В имеющемся шаблоне сайта заменить статичное меню (ul – li) на генерируемое через PHP. Необходимо представить пункты меню как элементы массива и вывести их циклом. Подумать, как можно реализовать меню с вложенными подменю? Попробовать его реализовать.");
 		
-		$menu = [
-					["Главная", "/", 
-						[
-							["о нас", "/aboutus", 
-								[ 
-									["офис", "/aboutus/office", []], 
-									["склад", "/aboutus/sklad", []]
-								]
-							], 
-					        ["реквизиты", "/requisits",  []]
-						]
-					],
-					["Каталог товаров", "/catalog", []]
-				];
-		
-		$result = $this->renderMenu($menu);
+		$result = $this->renderMenu($this->mMenu);
 		
 		return $task->getContent($result);
 	}
@@ -198,6 +202,76 @@ class Task3  extends Content
 		
 		return $result;
 		
+	}
+	
+	private function task6() {
+		$task = new Task(7, "*Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла. Выглядеть должно так:
+for (…){ // здесь пусто}");
+		
+		
+		$result= '';
+		for ($i=0; $i<10; $result.= $i++) {};
+		
+		$result= 'for ($i=0; $i<10; $result .= $i++) {}<br><br>Результат выполнения: $result = '.$result;
+		
+		return $task->getContent($result);
+	}
+	
+	private function task7() {
+		$task = new Task(8, "*Повторить третье задание, но вывести на экран только города, начинающиеся с буквы «К».");
+		
+		$result = '';
+		
+		$cities = $this->mCities;
+		
+		foreach ($cities as $key => $value) {
+			$result .= "{$key}:<br>  ";
+			
+			for ($i = 0; $i < count($value); $i++) {
+				
+				
+				if (mb_substr($value[$i], 0, 1) === "К")
+				{
+					$result .= $value[$i] . ' ';
+				}
+			}
+			
+			$result .= "<br>";
+		}
+		
+		
+		
+		return $task->getContent($result);
+	}
+	
+	private function task8() {
+		$task = new Task(9, " *Объединить две ранее написанные функции в одну, которая получает строку на русском языке, производит транслитерацию и замену пробелов на подчеркивания (аналогичная задача решается при конструировании url-адресов на основе названия статьи в блогах).");
+		
+		$result = 'просто выведем меню из задания 6 в транслите<br>';
+		
+		$menu = $this->translitMenu($this->mMenu);
+		
+		$result = $result.$this->renderMenu($menu);
+		
+		return $task->getContent($result);
+		
+		
+	}
+	
+	private function translitMenu(array $menu) {
+		
+			if (count($menu) == 0) return [];
+			
+			for ($i = 0; $i < count($menu); $i++)
+			{
+				$menu[$i][0] = $this->translitIt($menu[$i][0]);
+				$menu[$i][1] = $this->translitIt($menu[$i][1]);
+				
+				$menu[$i][2] = $this->translitMenu($menu[$i][2]);
+			}
+			
+			
+			return $menu;
 	}
 	
 	
