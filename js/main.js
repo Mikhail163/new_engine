@@ -2,6 +2,8 @@
 
 function openInModule(img_id) {
 	
+	closeImage();
+	
 	let body = document.body;
 	
 	let img = document.getElementById(img_id);
@@ -17,9 +19,13 @@ function openInModule(img_id) {
 	
 	close.addEventListener('click', () => closeImage());
 	
+	let div_for_image = document.createElement("div");
+	div_for_image.classList.add("div_for_image");	
+	big_img.appendChild(div_for_image);
+	
 	let picture = document.createElement("img");
 	picture.setAttribute('src', img.src);
-	big_img.appendChild(picture);
+	div_for_image.appendChild(picture);
 	
 	
 	body.classList.toggle("hidden");
@@ -29,6 +35,10 @@ function openInModule(img_id) {
 
 function closeImage() {
 	let img = document.getElementById("modal_image_id");
-	img.remove();
-	document.body.classList.toggle("hidden");
+	
+	if (img != null) {
+		img.remove();
+		document.body.classList.toggle("hidden");
+	}
+	
 }

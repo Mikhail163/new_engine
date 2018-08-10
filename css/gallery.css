@@ -23,6 +23,7 @@
 .cssSlider .slides > li > img {
 	width: 100%;
 	height: 350px;
+	cursor:pointer;
 }
 /*
 .cssSlider .slides > li:first-child:not(:target) {
