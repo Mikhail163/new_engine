@@ -22,7 +22,7 @@
 }
 .cssSlider .slides > li > img {
 	width: 100%;
-	height: auto;
+	height: 350px;
 }
 /*
 .cssSlider .slides > li:first-child:not(:target) {

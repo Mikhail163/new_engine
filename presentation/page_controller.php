@@ -8,12 +8,13 @@ class PageController
 	
 
 	public $mPageTypes = [
-			'task' => 1
+			'task' => 1,
+			'main' => 2
 	];
 	
 	public $mPageType = 0;
 	public $mPageNumber = 0;
-	public $mPageContent = [];
+	public $mPageContent;
 
 	
 	public $mTaskArray = [
@@ -42,6 +43,9 @@ class PageController
 					$this->mPageType = 0;
 			}
 		}
+		else {
+			$this->mPageType = $this->mPageTypes['main'];
+		}
 	}
 	
 	public function getContentObj() {
@@ -59,6 +63,8 @@ class PageController
 	public function getMenu() {
 		
 		$menu = '<div class="main_menu">';
+		
+		$menu .= '<a '.($this->mPageType == $this->mPageTypes['main']?'class="active"':'').' href="/">Главная</a>';
 		
 		foreach ($this->mTaskArray as $task)
 		{
