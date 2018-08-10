@@ -10,7 +10,6 @@ class Gallery  extends Content
 	
 	public function __construct()
 	{
-		$this->mSmallIPath = SITE_ROOT.'';
 		$this->mBigIPath = SITE_ROOT.$this->mBigUrl;
 		$this->mSmallIPath= SITE_ROOT.$this->mSmallUrl;
 		
