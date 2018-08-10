@@ -1,51 +1,41 @@
 <?php 
 
-require_once PRESENTATION_DIR . 'task3.php';
+
 
 class Content
 {
 	
 	public $mContent;
+	public $mUnknownPage = false;
+
 	
-	public function __construct()
+	public function __construct($page_controller)
 	{
-		$this->mContent = new Task3;
+		
+		// определяем на какой мы странице
+		$this->mContent = $page_controller->getContentObj();
+
+		$this->mUnknownPage = $page_controller->isUnknownPage();
+		
 	}
 	
 	public function getContent() {
 		
+		if ($this->mUnknownPage)
+			return '<p>Неизвестная страница сайта, рекомендуем вернуться на <a href="/">главную страницу</a></p>';
+		
 		return $this->mContent->getContent();
 		
 	}
-}
-
-function getTimeString() {
-	$houre_string = "часов";
-	$minute_string = "минут";
 	
-	$houre = (int)date("G", time());
-	$min = (int)date("i", time());
 	
-	switch($houre%10)
-	{
-		case 1: $houre_string = 'час'; break;
+	public function getH1() {
 		
-		case 2:
-		case 4:
-		case 3: $houre_string = 'часа'; break;
-	}
-	
-	switch($min%10)
-	{
-		case 1: $minute_string = 'минута'; break;
+		if ($this->mUnknownPage)
+			return 'Такой страници не существует';
 		
-		case 2:
-		case 4:
-		case 3: $minute_string = 'минуты'; break;
+		return $this->mContent->getH1();
+		
 	}
-	
-	return "{$houre} {$houre_string} {$min} {$minute_string}";
-	
 }
-
 ?>

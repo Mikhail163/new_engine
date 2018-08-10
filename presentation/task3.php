@@ -8,6 +8,8 @@ class Task3  extends Content
 	
 	public $mMenu = [];
 	
+	public $mH1 = 'Выполняем задание 3 к базовуму курсу php';
+	
 	public function __construct()
 	{
 		$this->mCities = [
@@ -35,6 +37,10 @@ class Task3  extends Content
 		
 		return $this->task0() . $this->task1() . $this->task2() . $this->task3() . $this->task4() . $this->task5() . $this->task6() . $this->task7() . $this->task8();
 		
+	}
+	
+	public function getH1() {
+		return $this->mH1;
 	}
 	
 	private function task0() {

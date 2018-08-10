@@ -2,9 +2,13 @@
 <html>
 <head>
 	<title>{{TITLE}}</title>
-	<link href="css/main.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+	<link href="/css/gallery.css" rel="stylesheet">
 </head>
 <body>
+
+<div id="main_menu">{{MENU}}</div>
+
 <h1>{{H1}}</h1>
 <div id="content">
 {{CONTENT}}

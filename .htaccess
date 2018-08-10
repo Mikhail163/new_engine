@@ -1,0 +1,25 @@
+# Enable mod_rewrite
+RewriteEngine On
+
+# Specify the folder in which the application resides.
+# Use / if the application is in the root. 
+RewriteBase /
+Options -Indexes
+
+
+# Redirect URLs ending in /index.php or /index.html to /
+RewriteCond %{THE_REQUEST} ^GET\ .*/index\.((php/?)|(html/?)/?)\ HTTP
+RewriteRule ^(.*)index\.((php/?)|(html/?)/?)$ $1 [R=301,L]
+
+# Redirect department pages
+RewriteRule ^task([0-9]+)/?$ ?TaskId=$1 [L]
+RewriteRule ^task([0-9]+)/page-([0-9]+)/?$ ?TaskId=$1&Page=$2 [L]
+
+
+  
+# Set the default 500 page for Apache errors
+ErrorDocument 500 /500.php
+
+# Set the default 404 page
+ErrorDocument 404 /404.php
+

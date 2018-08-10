@@ -76,5 +76,15 @@ public static function ToTest($page = 1)
 	return self::Build($link);
 }
 
+public static function ToTask($task, $page = 1)
+{
+	$link = "task{$task}/";
+	
+	if ($page > 1)
+		$link .= 'page-' . $page . '/';
+		
+		return self::Build($link);
+}
+
 }
 ?>
