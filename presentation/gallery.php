@@ -64,9 +64,7 @@ class Gallery  extends Content
 		$ext = ['jpg', 'png'];
 		
 		foreach ($this->mPhotoArray as $img) {
-				
-			
-			
+					
 			// Определяем, что это картинка
 			foreach ($ext as $e) {
 				
@@ -80,8 +78,7 @@ class Gallery  extends Content
 				}
 				
 			}
-			
-			
+					
 		}
 		
 		$this->mPhotoArray = $photo;
