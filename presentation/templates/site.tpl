@@ -4,6 +4,7 @@
 	<title>{{TITLE}}</title>
 	<link href="/css/main.css" rel="stylesheet">
 	<link href="/css/gallery.css" rel="stylesheet">
+	<script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
 

@@ -30,7 +30,7 @@ class Gallery  extends Content
 	<ul class="slides">';
 		
 		for ($i = 0; $i < count ($this->mPhotoArray); $i++) {
-			$content .= '<li id="slide'.$i.'"><img src="'.$this->mBigUrl.$this->mPhotoArray[$i].'" alt="" /></li>';
+			$content .= '<li id="slide'.$i.'"><img id="slide_i_'.$i.'" src="'.$this->mBigUrl.$this->mPhotoArray[$i].'" alt="" onclick="return openInModule(\'slide_i_'.$i.'\');" /></li>';
 		}
 		
 		$content .=
