@@ -70,9 +70,6 @@ class Gallery  extends Content
 			// Определяем, что это картинка
 			foreach ($ext as $e) {
 				
-				
-				//echo mb_strtolower(substr($img, strlen($img)) - strlen($e));
-				
 				if (mb_strtolower(substr($img, strlen($img) - strlen($e), strlen($img))) == mb_strtolower($e)) {
 					
 					// проверяем, есть ли такая картинка в иконках 
@@ -81,6 +78,7 @@ class Gallery  extends Content
 					
 					break;
 				}
+				
 			}
 			
 			
