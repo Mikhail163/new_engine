@@ -23,7 +23,6 @@ class Gallery  extends Content
 	}
 	
 	public function getContent() {
-	
 		
 		$content = 
 		'
